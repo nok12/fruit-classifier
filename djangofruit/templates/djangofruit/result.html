@@ -1,0 +1,35 @@
+{% extends 'djangofruit/base.html' %}
+{% block title %}果物の推定結果{% endblock %}
+
+{% block content %}
+<div>
+    <h4 class="mt-4 mb-5 border-bottom">果物の推定結果</h4>
+    
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>ファイル名</td>
+                <td>{{ photo_name }}</td><br>
+            </tr>
+            <tr>
+                <td>画像ファイル</td>
+                <td><img class="preview" src={{ photo_data }}></img></td>
+            </tr>
+            <tr>
+                <td>判別結果</td>
+                <td>{{ ratio_1 }}％の確率で{{ label_1 }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ ratio_2 }}％の確率で{{ label_2 }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ ratio_3 }}％の確率で{{ label_3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'djangofruit:index' %}" class="btn btn-primary">選択画面に戻る</a>
+</div>
+{% endblock %}

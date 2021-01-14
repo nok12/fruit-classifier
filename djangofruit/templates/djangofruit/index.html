@@ -1,0 +1,35 @@
+{% extends 'djangofruit/base.html' %}
+{% block title %}果物の推定アプリ{% endblock %}
+
+{% block content %}
+<div>
+    <h4 class="mt-4 mb-5 border-bottom">画像から果物を推定する</h4>
+    <p>画像を選択後にボタンをクリック</p>
+    <form action="{% url 'djangofruit:predict' %}" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="custom-file">
+            {{ form.image }}
+            <label class="custom-file-label" for="customFile">
+                判定する画像ファイルを選択する
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">判定を行う</button>
+    </form>
+    <br>
+    <br>
+    <p>深層学習のモデルにおいて、学習を行った画像に対する答えのみ判別を行うため</p>
+    <p>１０種類に絞って判別を行なってます</p>
+    <li>いちご</li>
+    <li>オレンジ</li>
+    <li>さくらんぼ</li>
+    <li>パイナップル</li>
+    <li>バナナ</li>
+    <li>ブドウ</li>
+    <li>もも</li>
+    <li>りんご</li>
+    <li>レモン</li>
+    <li>柿</li>
+</div>
+{% endblock %}
